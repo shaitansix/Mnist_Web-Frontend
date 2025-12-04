@@ -11,7 +11,7 @@ const getResponse = async (url, body) => {
   try {
     const res = body ? await axios.post(url, body, HEADERS) : await axios.get(url)
     
-    if (res.statusText !== 'OK') {
+    if (res.statusText !== 'OK' && res.status !== 200) {
       throw ({
         state: 'Failed', 
         message: res.data.message ? 'An error has occurred' : res.data.message
