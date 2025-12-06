@@ -17,19 +17,28 @@ const PredictPanel = ({ id }) => {
   const handleClassify = async (event) => {
     const dataUrl = await canvasRef.current?.exportImage('jpg')
     const res = await classifyImage(id, { image: dataUrl })
-    setResponse({ 
-      result: res?.data?.number.toString(), 
-      probability: parseInt(res?.data?.probability * 100)
-    })
+    if (res.data) {
+      setResponse({ 
+        result: res?.data?.number.toString(), 
+        probability: parseInt(res?.data?.probability * 100)
+      })
+    } else {
+      setResponse(null)
+    }
   }
 
   const handleGenerate = async (event) => {
     const res = await testImage(id)
-    setImgString(res?.data?.image)
-    setResponse({ 
-      result: res?.data?.number.toString(), 
-      probability: parseInt(res?.data?.probability * 100)
-    })
+    if (res.data) {
+      setImgString(res?.data?.image)
+      setResponse({ 
+        result: res?.data?.number.toString(), 
+        probability: parseInt(res?.data?.probability * 100)
+      })
+    } else {
+      setImgString(null)
+      setResponse(null)
+    }
   }
 
   return (
