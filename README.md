@@ -62,6 +62,7 @@ El frontend gestiona el estado de configuración, resultados de entrenamiento e 
 
 ---
 
+<!--
 ## Opciones de Despliegue
 
 ### Usando Docker
@@ -111,3 +112,4 @@ npm run dev
 ```bash
 http://localhost:5173/
 ```
+-->
